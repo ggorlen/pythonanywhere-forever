@@ -1,4 +1,0 @@
-services:
-  build:
-    build: .
-    image: pythonanywhere-forever

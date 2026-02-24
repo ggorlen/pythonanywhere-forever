@@ -1,0 +1,31 @@
+name: Renew PythonAnywhere Web App
+
+on:
+  schedule:
+    - cron: '0 0 1 * *' # Runs 1st of every month
+  workflow_dispatch: # Allows manual trigger
+
+permissions:
+  contents: read
+
+jobs:
+  renew:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Renew PythonAnywhere webapp
+        working-directory: ${{ github.workspace }}
+        env:
+          PA_USERNAME: ${{ secrets.PA_USERNAME }}
+          PA_PASSWORD: ${{ secrets.PA_PASSWORD }}
+        run: python ./renew_pythonanywhere.py
