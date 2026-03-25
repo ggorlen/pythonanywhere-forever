@@ -11,3 +11,5 @@ https://user-images.githubusercontent.com/26277944/202918914-c7e5accc-f721-488c-
 ## Usage
 
 This uses GitHub actions; set `PA_USERNAME` and `PA_PASSWORD` secrets in the repo's settings to match your pythonanywhere credentials.
+
+The workflow will automatically run every 2 weeks, but can be triggered manually [here](https://github.com/ggorlen/pythonanywhere-forever/actions/workflows/renew.yml) (for forks, update the username).
